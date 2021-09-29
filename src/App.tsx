@@ -1,25 +1,13 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import ArticleManagerModule from "./components/article-manager-module";
+import {ACCESS_TOKEN} from "./components/article-manager-module/constants";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <>
+        <ArticleManagerModule token={localStorage.getItem(ACCESS_TOKEN) as string} />
+      </>
   );
 }
 
