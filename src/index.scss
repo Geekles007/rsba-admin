@@ -11,3 +11,8 @@ $carbon--theme: $carbon--theme--g100;
 $feature-flags: (
     grid-columns-16: true,
 );
+
+.bx--grid {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}

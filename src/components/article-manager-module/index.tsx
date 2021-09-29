@@ -3,6 +3,7 @@ import * as React from "react";
 import {ApolloProvider} from "@apollo/client";
 import {ioClient} from "./services/client";
 import {Tab, Tabs} from "carbon-components-react";
+import MakeArticleModule from "./children/make-article-module";
 
 interface ArticleManagerModuleProps {
     token: string;
@@ -15,7 +16,7 @@ const ArticleManagerModule = ({token}: ArticleManagerModuleProps) => {
             <ApolloProvider client={ioClient}>
                 <Tabs>
                     <Tab label={"Составить статью"}>
-
+                        <MakeArticleModule />
                     </Tab>
                     <Tab label={"Список статей"}>
 
