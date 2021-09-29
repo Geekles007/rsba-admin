@@ -5,9 +5,9 @@ import {ACCESS_TOKEN} from "./components/article-manager-module/constants";
 
 function App() {
   return (
-      <>
+      <div id={"main-app"}>
         <ArticleManagerModule token={localStorage.getItem(ACCESS_TOKEN) as string} />
-      </>
+      </div>
   );
 }
 
