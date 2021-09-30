@@ -18,6 +18,10 @@ const TextareaUIWrapper = styled.div`
   border-top: 1px solid ${gray30};
   flex-grow: 1;
   overflow-wrap: break-word;
+  max-height: 50vh;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  border: 1px solid ${gray30};
 
   .bx--form-item, .bx--text-area__wrapper {
     height: 100% !important;
@@ -33,6 +37,20 @@ const TextareaUIWrapper = styled.div`
       display: none;
     }
   }
+
+  &::-webkit-scrollbar {
+    width: 0.5em;
+    height: 0.5em;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: rgba(255,255,255,.1);
+    border-radius: 3px;
+
+    &:hover {
+      background: rgba(255,255,255,.2);
+    }
+  }
 `;
 
 const TextareaUI = ({defaultValue, placeholder, notifier, isReadOnly}: TextareaUIProps) => {
@@ -42,11 +60,10 @@ const TextareaUI = ({defaultValue, placeholder, notifier, isReadOnly}: TextareaU
     const onChange = (e: any) => {
         const content = e.target?.innerHTML;
         InputStore.setInput(content);
-        console.debug("input >>> ", InputStore.input);
 
         if (notifier && !isReadOnly) {
             try {
-                notifier(encrypt(content));
+                notifier((content));
             } catch (e) {
                 console.debug(e);
             }

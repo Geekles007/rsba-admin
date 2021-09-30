@@ -15,7 +15,6 @@ import RichTextViewController from "./../../controller";
 
 const TextareaToolbarWrapper = styled.div`
   display: flex;
-  background-color: ${gray90};
   border-bottom: 1px solid ${gray30};
 
   .divider {
@@ -50,15 +49,15 @@ const TextareaToolbar = ({isReadOnly}: TextareaToolbarProps) => {
                         onClick={(e) => RichTextViewController.editing("underline", e, "action-underline")}
                         renderIcon={TextUnderline32} tooltipPosition="top"
                         iconDescription={"Подчеркните"} size={"field"}/>
-                <Button disabled={isReadOnly} id={"action-h1"} kind={"secondary"} hasIconOnly
+                <Button disabled={true} id={"action-h1"} kind={"secondary"} hasIconOnly
                         onClick={(e) => RichTextViewController.editing("h1", e, "action-h1")}
                         renderIcon={NumberSmall_132} tooltipPosition="top"
                         iconDescription={"Заголовок 1"} size={"field"}/>
-                <Button disabled={isReadOnly} id={"action-h2"} kind={"secondary"} hasIconOnly
+                <Button disabled={true} id={"action-h2"} kind={"secondary"} hasIconOnly
                         onClick={(e) => RichTextViewController.editing("h2", e, "action-h2")}
                         renderIcon={NumberSmall_232} tooltipPosition="top"
                         iconDescription={"Заголовок 2"} size={"field"}/>
-                <Button disabled={isReadOnly} id={"action-h3"} kind={"secondary"} hasIconOnly
+                <Button disabled={true} id={"action-h3"} kind={"secondary"} hasIconOnly
                         onClick={(e) => RichTextViewController.editing("h3", e, "action-h3")}
                         renderIcon={NumberSmall_332} tooltipPosition="top"
                         iconDescription={"Заголовок 2"} size={"field"}/>

@@ -17,11 +17,12 @@ class MakeArticleController {
     get MySchema() {
         return yup.object().shape({
             title: yup.string().required(),
-            content: yup.string().required(),
+            content: yup.string(),
             link: yup.string().required()
         });
     }
 
+    onErrors() {}
 
 }
 

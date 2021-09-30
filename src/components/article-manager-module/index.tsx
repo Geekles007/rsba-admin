@@ -16,7 +16,7 @@ const ArticleManagerModule = ({token}: ArticleManagerModuleProps) => {
             <ApolloProvider client={ioClient}>
                 <Tabs>
                     <Tab label={"Составить статью"}>
-                        <MakeArticleModule />
+                        <MakeArticleModule token={token} />
                     </Tab>
                     <Tab label={"Список статей"}>
 

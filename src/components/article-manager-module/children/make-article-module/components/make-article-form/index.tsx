@@ -11,7 +11,11 @@ const CustomTile = styled(Tile)`
   background-color: transparent;
 `;
 
-const MakeArticleForm = () => {
+interface MakeArticleFormProps {
+    token: string;
+}
+
+const MakeArticleForm = ({token}: MakeArticleFormProps) => {
     const formProps = useForm<FormProps>({
         resolver: yupResolver(MakeArticleController.MySchema)
     });
@@ -21,7 +25,7 @@ const MakeArticleForm = () => {
             <h3>Создать статью</h3>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit tempore voluptate.</p>
 
-            <FormHandler formProps={formProps} />
+            <FormHandler token={token} formProps={formProps} />
         </CustomTile>
     );
 

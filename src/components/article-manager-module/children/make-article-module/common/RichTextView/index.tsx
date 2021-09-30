@@ -3,7 +3,7 @@ import * as React from "react";
 import styled from "styled-components";
 import TextareaToolbar from "./components/toolbar";
 import TextareaUI from "./components/textarea-ui";
-import {gray30, gray60} from "@carbon/colors";
+import {gray30, gray60, gray90} from "@carbon/colors";
 import {decrypt} from "./services/encryption";
 
 interface RichTextViewProps {
@@ -21,7 +21,8 @@ const RichTextViewWrapper = styled.div`
   width: 100%;
   max-width: 100%;
   min-height: 200px;
-  border: 1px solid ${gray30};
+  overflow-y: visible;
+  border-bottom: 1px solid #fff;
 
   b {
     font-weight: 700;

@@ -1,4 +1,3 @@
-@import 'carbon-components/scss/globals/scss/styles.scss';
 @import 'carbon-components/scss/globals/grid/grid';
 @import '@carbon/themes/scss/themes';
 
@@ -7,6 +6,8 @@ $carbon--theme: $carbon--theme--g100;
 
 // Use the gray 100 theme
 @include carbon--theme();
+
+@import 'carbon-components/scss/globals/scss/styles.scss';
 
 $feature-flags: (
     grid-columns-16: true,
