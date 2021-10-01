@@ -8,8 +8,13 @@ class InputStore {
         makeObservable(this, {
             input: observable,
             setInput: action,
-            getInput: computed
+            getInput: computed,
+            clear: action
         })
+    }
+
+    clear() {
+        this.input = "";
     }
 
     setInput(text: string) {

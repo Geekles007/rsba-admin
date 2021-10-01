@@ -1,7 +1,13 @@
 import styled from "styled-components";
+import {blue50} from "@carbon/colors";
 
 export const PreviewHandlerWrapper = styled.div`
-  padding: 1em 3em;
+  padding: 1em 1em;
+  
+  .backButton{
+    cursor: pointer;
+    color: ${blue50};
+  }
 
   h1 {
     font-size: 3.5em;

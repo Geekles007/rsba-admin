@@ -1,16 +1,15 @@
 import {memo} from "react";
 import * as React from "react";
 import styled from "styled-components";
-import {Button, ButtonSet, CopyButton, OverflowMenu, OverflowMenuItem} from "carbon-components-react";
+import {Button, CopyButton} from "carbon-components-react";
 import {
     NumberSmall_132,
     NumberSmall_232, NumberSmall_332, TextAlignCenter32, TextAlignJustify32, TextAlignLeft32, TextAlignRight32,
     TextBold32,
     TextItalic32,
-    TextUnderline32,
-    Txt32
+    TextUnderline32
 } from "@carbon/icons-react";
-import {gray30, gray50, gray60, gray90} from "@carbon/colors";
+import {gray30} from "@carbon/colors";
 import RichTextViewController from "./../../controller";
 
 const TextareaToolbarWrapper = styled.div`

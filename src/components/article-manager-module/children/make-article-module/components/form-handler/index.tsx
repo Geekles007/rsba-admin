@@ -9,8 +9,8 @@ import SubmitActionHandler from "../submit-action-handler";
 import ArticleStore from "../../../../stores/ArticleStore";
 import {encrypt} from "../../common/RichTextView/services/encryption";
 import {useMutation} from "@apollo/client";
-import {useForm} from "react-hook-form";
 import {CREATE_EDIT_ARTICLE} from "../../../../services/mutations/article";
+import InputStore from "../../common/RichTextView/store/InputStore";
 
 interface FormHandlerProps {
     formProps: FormProps;
@@ -21,7 +21,7 @@ const FormControl = styled.div`
   margin-top: 2em;
 `;
 
-export interface ISuccess{
+export interface ISuccess {
 
     state?: boolean;
     message: string;
@@ -29,11 +29,12 @@ export interface ISuccess{
 
 const FormHandler = ({formProps, token}: FormHandlerProps) => {
 
-    const {handleSubmit, register, reset, setValue, setError, errors} = formProps;
+    const {handleSubmit, register, reset, setValue, errors} = formProps;
+    const [defaultValue, setDefaultValue] = useState<string>("");
     const [succeed, setSucceed] = useState<ISuccess>({message: "operation-succeed"});
-    const [action, {loading, error}] = useMutation(CREATE_EDIT_ARTICLE, {
+    const [action, {loading}] = useMutation(CREATE_EDIT_ARTICLE, {
         notifyOnNetworkStatusChange: true,
-        context:{
+        context: {
             headers: {
                 Authorization: `Bearer ${token}`
             }
@@ -57,6 +58,16 @@ const FormHandler = ({formProps, token}: FormHandlerProps) => {
         setValue(event.target.name, event.target.value);
     }
 
+    const init = () => {
+        const editor = document?.getElementById("editor");
+        ArticleStore.clear();
+        InputStore.clear();
+        setDefaultValue("");
+        if (editor) {
+            editor.innerHTML = "" as string;
+        }
+    }
+
     const onSubmit = (data: Partial<any>,) => {
         action({
             variables: {
@@ -71,6 +82,7 @@ const FormHandler = ({formProps, token}: FormHandlerProps) => {
                 message: "operation-succeed"
             });
             reset();
+            init();
             setTimeout(() => {
                 setSucceed({
                     state: false,
@@ -96,7 +108,7 @@ const FormHandler = ({formProps, token}: FormHandlerProps) => {
                     invalid={errors.title !== undefined}/>
             </FormControl>
             <FormControl>
-                <RichTextView defaultValue={""}
+                <RichTextView defaultValue={defaultValue}
                               notifier={setContentHandler}
                               placeholder={"Напишите содержание здесь ..."}/>
             </FormControl>
@@ -112,7 +124,7 @@ const FormHandler = ({formProps, token}: FormHandlerProps) => {
                     placeholder={('Введите идентификатор видео на youtube') as string}
                     invalid={errors.link !== undefined}/>
             </FormControl>
-            <SubmitActionHandler loading={loading} succeed={succeed} />
+            <SubmitActionHandler loading={loading} succeed={succeed}/>
         </Form>
     );
 

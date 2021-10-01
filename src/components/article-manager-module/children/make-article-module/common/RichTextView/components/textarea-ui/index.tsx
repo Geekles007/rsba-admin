@@ -18,7 +18,7 @@ const TextareaUIWrapper = styled.div`
   border-top: 1px solid ${gray30};
   flex-grow: 1;
   overflow-wrap: break-word;
-  max-height: 50vh;
+  max-height: 40vh;
   overflow-y: scroll;
   overflow-x: hidden;
   border: 1px solid ${gray30};

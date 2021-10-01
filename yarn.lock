@@ -1362,6 +1362,11 @@
   resolved "https://registry.yarnpkg.com/@carbon/icon-helpers/-/icon-helpers-10.23.0.tgz#9811b44baead9422bb809f082ff6da27db8be1fa"
   integrity sha512-nx2QoHMz9AoNWPwowsdgw2PfFhOR2sFw5G0DyuwuY1ZNUFkevKZ+qfK86XXB25L1h6gHn9dw1F1F1yvQHw/C8A==
 
+"@carbon/icon-helpers@^10.24.0":
+  version "10.24.0"
+  resolved "https://registry.yarnpkg.com/@carbon/icon-helpers/-/icon-helpers-10.24.0.tgz#2f3fbc8b0b64090c21833cd81eabadc41d56b684"
+  integrity sha512-kmzN2Zjyp4EmCAlGu561+dJVABH96n5+RnjmsPdv4wrSx+FNyzbxnKYV1x2FYrTxtZ9LB+pd3EofEyVuQM6V0Q==
+
 "@carbon/icons-react@10.22.0":
   version "10.22.0"
   resolved "https://registry.yarnpkg.com/@carbon/icons-react/-/icons-react-10.22.0.tgz#5b49a08c94036db2cc5d2642a65e2b5cf6cfb45e"
@@ -1412,6 +1417,15 @@
   version "10.22.0"
   resolved "https://registry.yarnpkg.com/@carbon/motion/-/motion-10.22.0.tgz#a9f3e2a0c89d9b9f6c73c5ba61394c602f9f7acf"
   integrity sha512-FoHyioCUkss3yBdxBDXOqSGXag4MeBlPbVgmNyzSWY+ucK/BYum0ZKQjYD8ITQEPWkmJ1Sx7JiELLrO5aa+Ihw==
+
+"@carbon/pictograms-react@^11.19.0":
+  version "11.19.0"
+  resolved "https://registry.yarnpkg.com/@carbon/pictograms-react/-/pictograms-react-11.19.0.tgz#2254d7770328765fb084cc07034ae720033d11c1"
+  integrity sha512-ey0/RaGHuIhkO7M3nsscbeNVKkpVtHDMdbC3exnioIJf4+Kr5LVsLvzveLCMTrbpwyxG+LlguQ4IK//8E+HwnQ==
+  dependencies:
+    "@carbon/icon-helpers" "^10.24.0"
+    "@carbon/telemetry" "0.0.0-alpha.6"
+    prop-types "^15.7.2"
 
 "@carbon/telemetry@0.0.0-alpha.6":
   version "0.0.0-alpha.6"
@@ -2123,6 +2137,11 @@
   version "10.31.2"
   resolved "https://registry.yarnpkg.com/@types/carbon__icons-react/-/carbon__icons-react-10.31.2.tgz#3aad2a752f82ccc8a0151d8053edcebc0dc92765"
   integrity sha512-TFZhgEZVCTbB0AsQfohcMLC1dblJxGIDjSJeleiie5z7bc1O6qfLAjomh0bg54EgkuTNK2UIMJ2QPL1qPQZJyQ==
+
+"@types/carbon__pictograms-react@^11.9.1":
+  version "11.9.1"
+  resolved "https://registry.yarnpkg.com/@types/carbon__pictograms-react/-/carbon__pictograms-react-11.9.1.tgz#f6585b12c7785b826f7d927dfdf7c942fa0455e4"
+  integrity sha512-3qXuzarwEdvaEbiaJbPgFWVkG0PQUAONH3Ehy1/ztpZc5b+nmNBAUbA5zPgumD3XojLpQ4lsalX9TB4Nd/C61A==
 
 "@types/carbon__themes@^0.0.1":
   version "0.0.1"

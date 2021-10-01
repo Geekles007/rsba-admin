@@ -1,9 +1,9 @@
 import {memo} from "react";
 import * as React from "react";
-import {Column, Grid, Row, Tile} from "carbon-components-react";
+import {Column, Grid, Row} from "carbon-components-react";
 import styled from "styled-components";
 import MakeArticleForm from "./components/make-article-form";
-import PreviewHandler from "./components/preview-handler";
+import PreviewHandler from "../preview-handler";
 
 interface MakeArticleModuleProps {
     token: string;

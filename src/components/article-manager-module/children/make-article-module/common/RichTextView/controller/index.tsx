@@ -15,20 +15,27 @@ class RichTextViewController {
         const alignRight = document.getElementById("action-align-right");
         const alignCenter = document.getElementById("action-align-center");
         const alignJustify = document.getElementById("action-align-justify");
-        // @ts-ignore
-        bolder.classList.toggle('_active', this.howIsWritten("bold"));
-        // @ts-ignore
-        italicer.classList.toggle('_active', this.howIsWritten("italic"));
-        // @ts-ignore
-        underliner.classList.toggle('_active', this.howIsWritten("underline"));
-        // @ts-ignore
-        alignLeft.classList.toggle('_active', this.howIsWritten("justifyLeft"));
-        // @ts-ignore
-        alignRight.classList.toggle('_active', this.howIsWritten("justifyRight"));
-        // @ts-ignore
-        alignCenter.classList.toggle('_active', this.howIsWritten("justifyCenter"));
-        // @ts-ignore
-        alignJustify.classList.toggle('_active', this.howIsWritten("justifyFull"));
+        if(bolder) {
+            bolder.classList.toggle('_active', this.howIsWritten("bold"));
+        }
+        if(italicer) {
+            italicer.classList.toggle('_active', this.howIsWritten("italic"));
+        }
+        if(underliner) {
+            underliner.classList.toggle('_active', this.howIsWritten("underline"));
+        }
+        if(alignLeft) {
+            alignLeft.classList.toggle('_active', this.howIsWritten("justifyLeft"));
+        }
+        if(alignRight) {
+            alignRight.classList.toggle('_active', this.howIsWritten("justifyRight"));
+        }
+        if(alignCenter) {
+            alignCenter.classList.toggle('_active', this.howIsWritten("justifyCenter"));
+        }
+        if(alignJustify) {
+            alignJustify.classList.toggle('_active', this.howIsWritten("justifyFull"));
+        }
     }
 
     fontSize(size: number, unit: string) {
@@ -93,12 +100,6 @@ class RichTextViewController {
         }
         InputStore.setInput(text);
         e.preventDefault();
-    }
-
-    htmlDecode(content: string) {
-        let e = document.createElement('div');
-        e.innerHTML = content;
-        return e.childNodes.length === 0 ? "" : e.childNodes[0].nodeValue;
     }
 
 }

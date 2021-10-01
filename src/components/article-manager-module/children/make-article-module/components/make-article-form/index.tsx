@@ -9,6 +9,10 @@ import FormHandler from "../form-handler";
 
 const CustomTile = styled(Tile)`
   background-color: transparent;
+  position: sticky;
+  position: -webkit-sticky;
+  top: 1em;
+  
 `;
 
 interface MakeArticleFormProps {
