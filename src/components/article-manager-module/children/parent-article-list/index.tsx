@@ -2,9 +2,9 @@ import React, {memo, useCallback, useState} from "react";
 import ArticleListModule from "../article-list-module";
 import {Breadcrumb, BreadcrumbItem, Column, Grid, Row, Search} from "carbon-components-react";
 import {debounce} from "lodash";
-import {RETRIEVES_COUNT} from "../../constants";
+import {RETRIEVES_COUNT} from "../../../constants";
 import {useLazyQuery} from "@apollo/client";
-import {IConnection} from "../../models/IConnection";
+import {IConnection} from "../../../models/IConnection";
 import {IArticle} from "../../models/IArticle";
 import {SEARCH_ARTICLES} from "../../services/queries/article";
 import styled from "styled-components";
@@ -14,7 +14,7 @@ import DDSBreadcrumb from "@carbon/ibmdotcom-web-components/es/components-react/
 import DDSBreadcrumbItem from "@carbon/ibmdotcom-web-components/es/components-react/leadspace/breadcrumb-item";
 import {Home32} from "@carbon/icons-react";
 import {observer} from "mobx-react";
-import ModalUI from "../../common/modal-module";
+import ModalUI from "../../../common/modal-module";
 
 interface ParentArticleListProps {
     token: string;

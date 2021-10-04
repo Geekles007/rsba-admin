@@ -2,10 +2,10 @@ import {memo, useEffect} from "react";
 import {useQuery} from "@apollo/client";
 import {GET_ARTICLES} from "../../services/queries/article";
 import {ioClient} from "../../services/client";
-import {RETRIEVES_COUNT} from "../../constants";
+import {RETRIEVES_COUNT} from "../../../constants";
 import ListScroller from "./children/list-scroller";
 import {InlineLoading} from "carbon-components-react";
-import {IConnection} from "../../models/IConnection";
+import {IConnection} from "../../../models/IConnection";
 import {IArticle} from "../../models/IArticle";
 import styled from "styled-components";
 

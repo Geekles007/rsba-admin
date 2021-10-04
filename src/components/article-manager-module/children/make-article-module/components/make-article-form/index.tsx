@@ -2,7 +2,7 @@ import {memo} from "react";
 import {Tile} from "carbon-components-react";
 import styled from "styled-components";
 import {useForm} from "react-hook-form";
-import {FormProps} from "../../../../models/FormProps";
+import {FormProps} from "../../../../../models/FormProps";
 import {yupResolver} from "@hookform/resolvers/yup";
 import MakeArticleController from "./../../controller";
 import FormHandler from "../form-handler";
