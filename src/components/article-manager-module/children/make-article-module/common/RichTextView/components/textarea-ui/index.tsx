@@ -82,7 +82,7 @@ const TextareaUI = ({defaultValue, placeholder, notifier, isReadOnly}: TextareaU
 
     return (
         <TextareaUIWrapper
-            dangerouslySetInnerHTML={{__html: RichTextViewController.getData(decrypt(defaultValue))}}
+            dangerouslySetInnerHTML={{__html: RichTextViewController.getData((defaultValue))}}
             onInput={onChange}
             onBlur={onChange}
             placeholder={placeholder}

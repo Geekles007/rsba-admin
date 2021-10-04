@@ -30,7 +30,6 @@ export interface ISuccess {
 const FormHandler = ({formProps, token}: FormHandlerProps) => {
 
     const {handleSubmit, register, reset, setValue, errors} = formProps;
-    const [defaultValue, setDefaultValue] = useState<string>("");
     const [succeed, setSucceed] = useState<ISuccess>({message: "operation-succeed"});
     const [action, {loading}] = useMutation(CREATE_EDIT_ARTICLE, {
         notifyOnNetworkStatusChange: true,
@@ -42,7 +41,6 @@ const FormHandler = ({formProps, token}: FormHandlerProps) => {
     });
 
     const setContentHandler = useCallback((value) => {
-        console.log("new value >>>", value);
         ArticleStore.setArticle({
             ...ArticleStore.getArticle,
             content: value
@@ -62,7 +60,6 @@ const FormHandler = ({formProps, token}: FormHandlerProps) => {
         const editor = document?.getElementById("editor");
         ArticleStore.clear();
         InputStore.clear();
-        setDefaultValue("");
         if (editor) {
             editor.innerHTML = "" as string;
         }
@@ -72,6 +69,7 @@ const FormHandler = ({formProps, token}: FormHandlerProps) => {
         action({
             variables: {
                 input: {
+                    id: ArticleStore.selected && ArticleStore.selected !== "" ? ArticleStore.getArticle?.id ?? "" : "",
                     ...data,
                     content: encrypt(ArticleStore.getArticle?.content ?? "")
                 }
@@ -101,6 +99,7 @@ const FormHandler = ({formProps, token}: FormHandlerProps) => {
                     id={uuidv4()}
                     invalidText={"Название"}
                     ref={register}
+                    defaultValue={ArticleStore.selected && ArticleStore.selected !== "" ? ArticleStore.getArticle?.title ?? "" : ""}
                     onChange={onChangeHandler}
                     name={MakeArticleController.fields.title}
                     labelText={('Название') as string + "*"}
@@ -108,7 +107,7 @@ const FormHandler = ({formProps, token}: FormHandlerProps) => {
                     invalid={errors.title !== undefined}/>
             </FormControl>
             <FormControl>
-                <RichTextView defaultValue={defaultValue}
+                <RichTextView defaultValue={ArticleStore.selected && ArticleStore.selected !== "" ? ArticleStore.getArticle?.content ?? "" : ""}
                               notifier={setContentHandler}
                               placeholder={"Напишите содержание здесь ..."}/>
             </FormControl>
@@ -118,6 +117,7 @@ const FormHandler = ({formProps, token}: FormHandlerProps) => {
                     invalidText={"Введите идентификатор видео на youtube"}
                     type={"text"}
                     ref={register}
+                    defaultValue={ArticleStore.selected && ArticleStore.selected !== "" ? ArticleStore.getArticle?.link ?? "" : ""}
                     onChange={onChangeHandler}
                     name={MakeArticleController.fields.link}
                     labelText={('Введите идентификатор видео на youtube') as string}

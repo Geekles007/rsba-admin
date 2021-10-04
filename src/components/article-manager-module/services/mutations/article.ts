@@ -10,3 +10,9 @@ export const CREATE_EDIT_ARTICLE = gql`
         }
     }
 `;
+
+export const DELETE_ARTICLE = gql`
+    mutation DELETE_ARTICLE($input: ID!) {
+        deleteFeedbackArticle(input: $input)
+    }
+`;

@@ -22,4 +22,4 @@ const ModalUI = observer(() => {
     );
 })
 
-export default (memo(ModalUI));
+export default inject("DialogStore")(memo(ModalUI));

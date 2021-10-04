@@ -39,7 +39,6 @@ const ArticleListModule = ({token, setRendered, inputSearch, searchLoading, sear
     useEffect(() => {
         return function cleanUp() {
             setRendered(false);
-            console.log("Trigger cleanup");
         }
     }, []);
 

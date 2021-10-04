@@ -1,11 +1,10 @@
-import {useState} from "react";
+import {memo, useState} from "react";
 import * as React from "react";
 import {ApolloProvider} from "@apollo/client";
 import {ioClient} from "./services/client";
 import {Tab, Tabs} from "carbon-components-react";
 import MakeArticleModule from "./children/make-article-module";
 import ParentArticleList from "./children/parent-article-list";
-import ArticleStore from "./stores/ArticleStore";
 import {observer, Provider} from "mobx-react";
 import ModalUI from "./common/modal-module";
 import DialogStore from "./stores/DialogStore";
@@ -21,11 +20,11 @@ const ArticleManagerModule = ({token}: ArticleManagerModuleProps) => {
     return (
         <ApolloProvider client={ioClient}>
             <Provider DialogStore={DialogStore}>
-                <Tabs selected={ArticleStore.selected}>
-                    <Tab label={"Составить статью"} onClick={() => setRendered(false)} renderContent={() => (
+                <Tabs >
+                    <Tab id={"manager-article"} label={"Составить статью"} onClick={() => setRendered(false)} renderContent={() => (
                         (!rendered) ? <MakeArticleModule token={token} /> : <></>
                     )} />
-                    <Tab label={"Список статей"} onClick={() => setRendered(true)} renderContent={() => ((rendered) ?
+                    <Tab id={"list-article"} label={"Список статей"} onClick={() => setRendered(true)} renderContent={() => ((rendered) ?
                         <ParentArticleList token={token} setRendered={setRendered} /> : <></>)} />
                 </Tabs>
                 <ModalUI/>
@@ -35,4 +34,4 @@ const ArticleManagerModule = ({token}: ArticleManagerModuleProps) => {
 
 }
 
-export default observer(ArticleManagerModule);
+export default memo(ArticleManagerModule);

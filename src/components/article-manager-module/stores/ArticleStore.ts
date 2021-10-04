@@ -4,7 +4,7 @@ import {action, computed, makeObservable, observable} from "mobx";
 class ArticleStore {
 
     article: IArticle = {};
-    selected: number = 0;
+    selected: string = "";
 
     constructor() {
         makeObservable(this, {
@@ -24,10 +24,10 @@ class ArticleStore {
             title: "",
             content: ""
         }
-        this.selected = 0;
+        this.selected = "";
     }
 
-    setSelected(selected: number) {
+    setSelected(selected: string) {
         this.selected = selected;
     }
 

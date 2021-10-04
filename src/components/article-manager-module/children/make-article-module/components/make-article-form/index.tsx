@@ -17,12 +17,10 @@ const CustomTile = styled(Tile)`
 
 interface MakeArticleFormProps {
     token: string;
+    formProps: FormProps
 }
 
-const MakeArticleForm = ({token}: MakeArticleFormProps) => {
-    const formProps = useForm<FormProps>({
-        resolver: yupResolver(MakeArticleController.MySchema)
-    });
+const MakeArticleForm = ({token, formProps}: MakeArticleFormProps) => {
 
     return (
         <CustomTile>

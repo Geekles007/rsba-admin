@@ -1,5 +1,4 @@
 import {memo, useEffect, useState} from "react";
-import {useTranslation} from "react-i18next";
 import * as React from 'react';
 import {useMutation} from "@apollo/client";
 import {OperationVariables} from "@apollo/client/core";
@@ -10,12 +9,14 @@ import {ISuccess} from "../../children/make-article-module/components/form-handl
 
 interface IOperationProps {
     variables: OperationVariables,
+    context: any;
     node: DocumentNode
 }
 
 export interface GenericDeleteProps<V extends BaseModelDelete> {
     text?: string;
-    list?: V[];
+    id?: string;
+    clear: () => void;
     operation: IOperationProps;
 }
 
@@ -24,13 +25,13 @@ interface BaseModelDelete {
 }
 
 const GenericDelete = <T extends BaseModelDelete>({
-                                                      list, operation, text
+                                                      id, operation, text, clear
                                                   }: GenericDeleteProps<T>) => {
     const [succeed, setSucceed] = useState<ISuccess>({message: "operation-succeed"});
-    const {t} = useTranslation('translation', {useSuspense: false});
     const [action, {loading, data, error}] = useMutation(operation?.node, {
         notifyOnNetworkStatusChange: true,
-        ...operation?.variables
+        ...operation?.variables,
+        context: operation.context
     });
 
     useEffect(() => {
@@ -40,45 +41,49 @@ const GenericDelete = <T extends BaseModelDelete>({
     }, []);
 
     const onDelete = () => {
-        list?.map((item: T) => {
-            action({
-                variables: {input: item?.id},
-            }).then(results => {
+        action({
+            variables: {input: id},
+        }).then(results => {
+            setSucceed({
+                state: true,
+                message: "operation-succeed"
+            });
+            setTimeout(() => {
                 setSucceed({
-                    state: true,
+                    state: false,
                     message: "operation-succeed"
                 });
-                setTimeout(() => {
-                    setSucceed({
-                        state: false,
-                        message: "operation-succeed"
-                    });
-                }, 1000)
-                DialogStore.closeFromOutside();
-            }).catch(error => {
-                console.debug(error);
-            });
+            }, 1000)
+            clear();
+            DialogStore.closeFromOutside();
+        }).catch(error => {
+            console.debug(error);
         });
+    }
+
+    const closeModal = () => {
+        DialogStore.setOpen(false);
+        DialogStore.clear();
     }
 
     return (
         <>
             <ModalBody className="rs-modal-body">
-                <span>{t(text as string)}</span>
+                <span>{(text as string)}</span>
             </ModalBody>
 
             <ModalFooter>
                 <Button
                     kind="secondary"
                     type="button"
-                    onClick={DialogStore.closeFromOutside}>
-                    {t('no-text')}
+                    onClick={closeModal}>
+                    {('Нет')}
                 </Button>
                 {
                     loading || succeed.state ?
                         <InlineLoading
                             style={{marginLeft: '1rem'}}
-                            description={loading ? t('loading-text') : t('operation-finished')}
+                            description={loading ? ('Загрузка...') : ('Удалено успешно')}
                             status={succeed.state ? 'finished' : 'active'}
                             aria-live={"polite"}
                         /> : (
@@ -86,7 +91,7 @@ const GenericDelete = <T extends BaseModelDelete>({
                                 kind="danger"
                                 type="button"
                                 onClick={onDelete}>
-                                {t('yes-text')}
+                                {"Да"}
                             </Button>
                         )
                 }
