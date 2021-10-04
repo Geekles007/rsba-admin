@@ -5,9 +5,9 @@ import styled from "styled-components";
 import MakeArticleForm from "./components/make-article-form";
 import PreviewHandler from "../preview-handler";
 import {useForm} from "react-hook-form";
-import {FormProps} from "../../models/FormProps";
 import {yupResolver} from "@hookform/resolvers/yup";
 import MakeArticleController from "./controller";
+import {FormProps} from "../../../models/FormProps";
 
 interface MakeArticleModuleProps {
     token: string;

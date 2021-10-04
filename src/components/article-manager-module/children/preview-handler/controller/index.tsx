@@ -1,10 +1,9 @@
 import {DenormalizedRow} from "carbon-components-react";
-import DialogStore from "../../../stores/DialogStore";
-import {GenericDeleteProps} from "../../../common/generic-delete";
-import GenericDelete from "./../../../common/generic-delete";
 import ArticleStore from "../../../stores/ArticleStore";
 import {ioClient} from "../../../services/client";
 import {DELETE_ARTICLE} from "../../../services/mutations/article";
+import DialogStore from "../../../../stores/DialogStore";
+import GenericDelete, {GenericDeleteProps} from "../../../../common/generic-delete";
 
 class PreviewHandlerController {
 

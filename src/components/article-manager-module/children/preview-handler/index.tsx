@@ -8,7 +8,7 @@ import EmptyPreviewState from "./children/empty-state";
 import styled from "styled-components";
 import {TrashCan32} from "@carbon/icons-react";
 import PreviewHandlerController from "./controller";
-import {FormProps} from "../../models/FormProps";
+import {FormProps} from "../../../models/FormProps";
 
 const HeaderPreview = styled.div`
     display: flex;
