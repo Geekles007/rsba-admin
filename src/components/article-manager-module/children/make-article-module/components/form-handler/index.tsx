@@ -1,5 +1,5 @@
 import {memo, useCallback, useState} from "react";
-import {FormProps} from "../../../../models/FormProps";
+import {FormProps} from "../../../../../models/FormProps";
 import styled from "styled-components";
 import {Form, TextInput} from "carbon-components-react";
 import {v4 as uuidv4} from "uuid";

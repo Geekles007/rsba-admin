@@ -7,8 +7,8 @@ import MakeArticleModule from "./children/make-article-module";
 import ParentArticleList from "./children/parent-article-list";
 import ArticleStore from "./stores/ArticleStore";
 import {observer, Provider} from "mobx-react";
-import ModalUI from "./common/modal-module";
-import DialogStore from "./stores/DialogStore";
+import ModalUI from "../common/modal-module";
+import DialogStore from "../stores/DialogStore";
 
 interface ArticleManagerModuleProps {
     token: string;
