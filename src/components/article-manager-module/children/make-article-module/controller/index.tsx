@@ -1,5 +1,5 @@
-import {EditArticleProps} from "../../../models/EditArticleProps";
 import * as yup from "yup";
+import {EditArticleProps} from "../../../models/EditArticleProps";
 
 class MakeArticleController {
 

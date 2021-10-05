@@ -7,7 +7,7 @@ import PreviewHandler from "../preview-handler";
 import {useForm} from "react-hook-form";
 import {yupResolver} from "@hookform/resolvers/yup";
 import MakeArticleController from "./controller";
-import {FormProps} from "../../../models/FormProps";
+import {FormProps} from "../../models/FormProps";
 
 interface MakeArticleModuleProps {
     token: string;

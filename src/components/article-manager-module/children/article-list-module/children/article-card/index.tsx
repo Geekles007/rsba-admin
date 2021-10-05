@@ -5,7 +5,6 @@ import DDSCardCTAFooter from "@carbon/ibmdotcom-web-components/es/components-rea
 import {ArrowDownRight32} from "@carbon/icons-react";
 import DDSCard from "@carbon/ibmdotcom-web-components/es/components-react/card/card";
 import ArticleStore from "../../../../stores/ArticleStore";
-import {first} from "lodash";
 
 interface ArticleCardProps {
     article: IArticle

@@ -2,7 +2,7 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import App from './App';
 import ArticleManagerModule from "./components/article-manager-module";
-import {ACCESS_TOKEN} from "./components/constants";
+import {ACCESS_TOKEN} from "./components/type-module/constants";
 
 test('renders everything well', () => {
   render(<App />);

@@ -1,9 +1,8 @@
 import React, {memo} from "react";
-import useInfiniteScroll from "../../../../../common/use-infinite-scroll";
 import {IArticle} from "../../../../models/IArticle";
-import ListInfiniteScroll from "../../../../../common/ListInfiniteScroll";
 import ArticleList from "../article-list";
-import {IConnection} from "../../../../../models/IConnection";
+import useInfiniteScroll from "../../../../common/use-infinite-scroll";
+import ListInfiniteScroll from "../../../../common/ListInfiniteScroll";
 
 interface ListWrapperProps {
     fetchMore: any;

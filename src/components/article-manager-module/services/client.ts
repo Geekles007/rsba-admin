@@ -1,7 +1,7 @@
 import {HttpLink} from '@apollo/client';
 import {ApolloClient, DefaultOptions, InMemoryCache} from "@apollo/react-hooks";
 import {setContext} from '@apollo/client/link/context';
-import {USAGE} from "../../models/Environment";
+import {USAGE} from "../models/Environment";
 
 export const httpUserLink = new HttpLink({
     uri: USAGE.URI_FOR_FAQ

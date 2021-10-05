@@ -1,20 +1,14 @@
 import React, {memo, useCallback, useState} from "react";
 import ArticleListModule from "../article-list-module";
-import {Breadcrumb, BreadcrumbItem, Column, Grid, Row, Search} from "carbon-components-react";
+import {Column, Grid, Row, Search} from "carbon-components-react";
 import {debounce} from "lodash";
-import {RETRIEVES_COUNT} from "../../../constants";
 import {useLazyQuery} from "@apollo/client";
-import {IConnection} from "../../../models/IConnection";
-import {IArticle} from "../../models/IArticle";
-import {SEARCH_ARTICLES} from "../../services/queries/article";
 import styled from "styled-components";
-import ArticleStore from "../../stores/ArticleStore";
-import PreviewHandler from "../preview-handler";
-import DDSBreadcrumb from "@carbon/ibmdotcom-web-components/es/components-react/leadspace/breadcrumb";
-import DDSBreadcrumbItem from "@carbon/ibmdotcom-web-components/es/components-react/leadspace/breadcrumb-item";
-import {Home32} from "@carbon/icons-react";
 import {observer} from "mobx-react";
-import ModalUI from "../../../common/modal-module";
+import {SEARCH_ARTICLES} from "../../services/queries/article";
+import {IArticle} from "../../models/IArticle";
+import {RETRIEVES_COUNT} from "../../constants";
+import {IConnection} from "../../models/IConnection";
 
 interface ParentArticleListProps {
     token: string;

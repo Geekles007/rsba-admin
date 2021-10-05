@@ -1,5 +1,4 @@
 import {memo, useCallback, useState} from "react";
-import {FormProps} from "../../../../../models/FormProps";
 import styled from "styled-components";
 import {Form, TextInput} from "carbon-components-react";
 import {v4 as uuidv4} from "uuid";
@@ -11,6 +10,7 @@ import {encrypt} from "../../common/RichTextView/services/encryption";
 import {useMutation} from "@apollo/client";
 import {CREATE_EDIT_ARTICLE} from "../../../../services/mutations/article";
 import InputStore from "../../common/RichTextView/store/InputStore";
+import {FormProps} from "../../../../models/FormProps";
 
 interface FormHandlerProps {
     formProps: FormProps;
