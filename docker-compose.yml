@@ -1,12 +1,12 @@
 version: "3.1"
 
 services:
-  workspace:
+  administration:
     build:
       context: ./
     ports:
       - "8017:8017"
     expose:
       - "8017"
-    container_name: ibird-design
+    container_name: administration
     stdin_open: true
