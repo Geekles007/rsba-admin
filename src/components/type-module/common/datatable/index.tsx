@@ -67,7 +67,7 @@ export type DatatableProps<T> = {
         attributeName: string,
         orderOption: "asc" | "desc"
     },
-    searchInput: JSX.Element;
+    searchInput?: JSX.Element;
 }
 
 const DatatableUI: React.FC<DatatableProps<any>> = ({
@@ -117,14 +117,11 @@ const DatatableUI: React.FC<DatatableProps<any>> = ({
                       selectedRows,
                   }: DataTableCustomRenderProps) => (
                     <TableContainer title={title} description={description}>
-                        {
-                            !noToolbar ?
-                                <ToolbarUI icon={mainButtonIcon} additionals={additionals}
-                                           selectedRows={selectedRows} data={data} searchInput={searchInput}
-                                           titleNew={titleNew} add={add} actions={batchActions}
-                                           batchActionsProps={getBatchActionProps()} inputChange={onInputChange}
-                                           refresh={refresh} print={print}/> : <></>
-                        }
+                        <ToolbarUI noToolbar={noToolbar} icon={mainButtonIcon} additionals={additionals}
+                                   selectedRows={selectedRows} data={data} searchInput={searchInput}
+                                   titleNew={titleNew} add={add} actions={batchActions}
+                                   batchActionsProps={getBatchActionProps()} inputChange={onInputChange}
+                                   refresh={refresh} print={print}/>
                         <Table size="normal" overflowMenuOnHover={true}>
                             <HeadersUI isExpanded={isExpanded} noSelection={noSelection} withMenu={actions}
                                        headers={headers} tableSelectAllProps={getSelectionProps()}

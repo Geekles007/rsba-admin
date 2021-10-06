@@ -28,8 +28,7 @@ const GenericDelete = <T extends BaseModelDelete>({
                                                   }: GenericDeleteProps<T>) => {
     const [succeed, setSucceed] = useState<ISuccess>({message: "operation-succeed"});
     const {t} = useTranslation('translation', {useSuspense: false});
-    const [action, {loading, data, error}] = useMutation(operation?.node, {
-        notifyOnNetworkStatusChange: true,
+    const [action, {loading}] = useMutation(operation?.node, {
         ...operation?.variables
     });
 

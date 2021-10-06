@@ -21,9 +21,9 @@ export const SEARCH_TYPE_OF_ORDER = gql`
             edges {
                 node {
                     id
-                    title
-                    content
-                    link
+                    name
+                    description
+                    isDefault
                 }
             }
         }

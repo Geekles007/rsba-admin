@@ -28,7 +28,7 @@ class TypeModuleController {
             key: "description"
         },
         {
-            header: "Default",
+            header: "is-default-field-text",
             key: "isDefault"
         },
     ];
@@ -46,7 +46,8 @@ class TypeModuleController {
     get MySchema() {
         return yup.object().shape({
             name: yup.string().required(),
-            description: yup.string()
+            description: yup.string(),
+            isDefault: yup.boolean()
         });
     }
 
@@ -101,8 +102,8 @@ class TypeModuleController {
                         type: TYPEINPUT.checkbox,
                         helperText: "",
                         id: uuidv4(),
-                        defaultValue: dataToEdit?.isDefault,
-                        name: (this.fields.isDefault as string) ?? "",
+                        defaultValue: dataToEdit ? dataToEdit?.isDefault : false,
+                        name: (this.fields.isDefault as string),
                         invalidText: 'invalid-operations-field-text',
                         labelText: 'is-default-field-text',
                         placeholder: 'is-default-field-placeholder',

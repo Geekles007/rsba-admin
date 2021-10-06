@@ -1,16 +1,19 @@
-import React, {memo, useCallback, useState} from "react";
-import {useLazyQuery, useMutation, useQuery} from "@apollo/client";
-import {InlineLoading, Search} from "carbon-components-react";
+import React, {useCallback, useEffect, useState} from "react";
+import {useLazyQuery} from "@apollo/client";
+import {Search} from "carbon-components-react";
 import {debounce} from "lodash";
 import styled from "styled-components";
 import ParentTypeList from "../parent-type-list";
-import {SEARCH_TYPE_OF_ORDER} from "../../services/queries/type";
+import {GET_TYPES, SEARCH_TYPE_OF_ORDER} from "../../services/queries/type";
 import {IType} from "../../models/IType";
 import {IConnection} from "../../models/IConnection";
 import {RETRIEVES_COUNT} from "../../constants";
-import {UPLOAD_FILE} from "../../services/mutations/type";
-import ClientBuilder from "../../services/client";
-import {USAGE} from "../../models/Environment";
+import ToolbarContentUI from "../../common/datatable/components/toolbar/components/toolbar-content";
+import DialogStore from "../../stores/DialogStore";
+import GenericFormUI from "../../common/generic-form";
+import TypeModuleController from "../../controller";
+import {observer} from "mobx-react";
+import TypeStore from "../../stores/TypeStore";
 
 interface TypeManagerModuleProps {
     token: string;
@@ -34,10 +37,19 @@ const TypeManagerModule = ({token}: TypeManagerModuleProps) => {
         }
     }
 
-    const [input, setInput] = useState<string>("");
-    const [executeSearch, {data, fetchMore, loading}] = useLazyQuery<IConnection<IType>>(
-        SEARCH_TYPE_OF_ORDER
+    const [input, setInput] = useState<string | undefined>();
+    const [executeSearch, {data, fetchMore, loading, refetch}] = useLazyQuery<IConnection<IType>>(
+        input && input !== "" ? SEARCH_TYPE_OF_ORDER : GET_TYPES
     );
+
+    useEffect(() => {
+        if(!input || input === "") {
+            executeSearch({
+                variables: {first: RETRIEVES_COUNT},
+                ...tokenContext
+            })
+        }
+    }, []);
 
     const onChangeHandler = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
         const value = event?.target?.value;
@@ -47,7 +59,7 @@ const TypeManagerModule = ({token}: TypeManagerModuleProps) => {
     }, [input])
 
     const handleFilter = debounce((val) => {
-        if (val.length > 0) {
+        if (val && val.length > 0) {
             executeSearch({
                 variables: {input: val, first: RETRIEVES_COUNT},
                 ...tokenContext
@@ -55,20 +67,32 @@ const TypeManagerModule = ({token}: TypeManagerModuleProps) => {
         }
     }, 300);
 
+    const add = () => {
+        DialogStore.openFromOutside({
+            title: 'fill-and-save',
+            content: <GenericFormUI {...TypeModuleController.getOptions()} />,
+            size: 'sm'
+        });
+    }
+
     return (
         <Wrapping>
-            <ParentTypeList searchInput={
-                <Search
+            <ToolbarContentUI
+                titleNew="Добавить новый"
+                data={TypeStore.values}
+                searchInput={<Search
                     labelText={""}
                     id="search-1"
                     placeHolderText="Тип поиска"
                     onChange={onChangeHandler}
-                />
-            } searchLoading={loading} inputSearch={input} searchMore={fetchMore}
+                />}
+                add={add}
+                refresh={refetch} />
+            <ParentTypeList data={data} searchLoading={loading} searchRefresh={refetch} inputSearch={input} searchMore={fetchMore}
                         searchResults={data} token={token}/>
         </Wrapping>
     );
 
 }
 
-export default memo(TypeManagerModule);
+export default observer(TypeManagerModule);

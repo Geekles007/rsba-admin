@@ -1,7 +1,7 @@
 import {memo, useEffect} from "react";
 import * as React from "react";
 import FormGenerator, {FormGeneratorProps} from "./components/form-generator";
-import customUseForm from "./repositories/custom-use-form";
+import CustomUseForm from "./repositories/custom-use-form";
 import * as Yup from "yup";
 import Lazy from "yup/lib/Lazy";
 
@@ -18,7 +18,7 @@ export interface GenericFormUIProps<T extends BaseModel> {
 
 const GenericFormUI = <V extends BaseModel>({formOptions, dataToEdit, schema, description}: GenericFormUIProps<V>) => {
 
-    const form = customUseForm<V>({schema: schema});
+    const form = CustomUseForm<V>({schema: schema});
     const options: FormGeneratorProps<V> = {
         ...formOptions,
         dataToEdit: dataToEdit,

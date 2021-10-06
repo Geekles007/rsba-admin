@@ -1,4 +1,4 @@
-import {ChangeEvent, memo} from "react";
+import {ChangeEvent, memo, useEffect} from "react";
 import * as React from 'react';
 import {Checkbox, Toggle} from "carbon-components-react";
 import {GenericFormProps} from "../../model/GenericFormProps";
@@ -14,14 +14,14 @@ interface CheckboxUIProps {
 const CheckboxUI: React.FC<CheckboxUIProps> = ({
                                 name,
                                 labelText,
-                                defaultValue,
+                                defaultValue = false,
                                 form,
                                 id
                               }) => {
 
     form?.register({name: name as string}, {required: true});
 
-    form?.setValue(name, false);
+    form?.setValue(name, defaultValue ?? false);
 
     return (
         <>
@@ -29,7 +29,7 @@ const CheckboxUI: React.FC<CheckboxUIProps> = ({
                 labelText={labelText as string}
                 id={id}
                 name={name}
-                checked
+                defaultChecked={defaultValue}
                 onChange={(async (picked: ChangeEvent<HTMLInputElement>) => {
                     if (!picked) {
                         // form?.setError(name, message);

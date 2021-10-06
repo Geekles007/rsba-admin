@@ -24,6 +24,7 @@ type ToolbarUIProps = {
     icon?: CarbonIconType,
     data: any[],
     searchInput?: JSX.Element;
+    noToolbar: boolean;
 }
 
 const ToolbarUI = ({
@@ -38,7 +39,8 @@ const ToolbarUI = ({
                        titleNew,
                        icon,
                        data,
-                       searchInput
+                       searchInput,
+                       noToolbar
                    }: ToolbarUIProps) => {
 
     const printButtonRef: RefObject<any> = React.createRef();
@@ -46,9 +48,12 @@ const ToolbarUI = ({
     return (
         <TableToolbar>
             <BatchActionsUI printButtonRef={printButtonRef} selectedRows={selectedRows} actions={actions} tableBatchActionsProps={batchActionsProps}/>
-            <ToolbarContent printButtonRef={printButtonRef} data={data} mainButtonIcon={icon} additionals={additionals} add={add} titleNew={titleNew}
-                            refresh={refresh} print={print} onInputChange={inputChange} searchInput={searchInput}
-                            tableBatchActionsProps={batchActionsProps} selectedRows={selectedRows}/>
+            {
+                !noToolbar ?
+                    <ToolbarContent printButtonRef={printButtonRef} data={data} mainButtonIcon={icon} additionals={additionals} add={add} titleNew={titleNew}
+                                    refresh={refresh} print={print} onInputChange={inputChange} searchInput={searchInput}
+                                    tableBatchActionsProps={batchActionsProps} selectedRows={selectedRows}/> : <></>
+            }
         </TableToolbar>
     );
 }

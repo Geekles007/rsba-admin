@@ -15,17 +15,17 @@ import {v4 as uuidv4} from "uuid";
 import {CSVLink} from "react-csv";
 
 type ToolbarContentUIProps = {
-    tableBatchActionsProps: TableBatchActionsProps,
-    onInputChange: (event: React.SyntheticEvent<HTMLInputElement, Event>) => void,
+    tableBatchActionsProps?: TableBatchActionsProps,
+    onInputChange?: (event: React.SyntheticEvent<HTMLInputElement, Event>) => void,
     refresh?: () => void,
     print?: () => void | { label: string, key: string }[],
     additionals?: JSX.Element[],
     add?: () => void | boolean,
     titleNew?: string,
     mainButtonIcon?: CarbonIconType,
-    selectedRows: any,
+    selectedRows?: any,
     data: any[],
-    printButtonRef: RefObject<any>,
+    printButtonRef?: RefObject<any>,
     searchInput?: JSX.Element;
 }
 
@@ -49,11 +49,9 @@ const ToolbarContentUI = ({
                               searchInput
                           }: ToolbarContentUIProps) => {
 
-    const {shouldShowBatchActions} = tableBatchActionsProps;
-
     const printing = () => {
         // @ts-ignore
-        printButtonRef.current.link.click();
+        printButtonRef?.current.link.click();
         if (print && typeof print === "function") {
             print();
         }
@@ -63,11 +61,11 @@ const ToolbarContentUI = ({
         <>
             <TableToolbarContent>
                 {
-                    searchInput ? "yes" :
+                    searchInput ? searchInput :
                         <TableToolbarSearch
                             persistent={true}
                             placeholder={"Фильтр пользователей"}
-                            tabIndex={shouldShowBatchActions ? -1 : 0}
+                            tabIndex={tableBatchActionsProps?.shouldShowBatchActions ? -1 : 0}
                             onChange={onInputChange}
                         />
                 }
@@ -111,7 +109,7 @@ const ToolbarContentUI = ({
                     (add !== undefined) ?
                         <Button
                             hasIconOnly={titleNew === ""}
-                            tabIndex={shouldShowBatchActions ? -1 : 0}
+                            tabIndex={tableBatchActionsProps?.shouldShowBatchActions ? -1 : 0}
                             onClick={add}
                             renderIcon={mainButtonIcon}
                             iconDescription={"Add"}

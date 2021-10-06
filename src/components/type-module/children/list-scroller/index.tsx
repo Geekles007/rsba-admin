@@ -9,11 +9,10 @@ interface ListWrapperProps {
     retrieveAttributes: any;
     count: number;
     data: Array<IType>;
-    searchInput: JSX.Element;
     refetch: any;
 }
 
-const TypeListScroller = ({fetchMore, retrieveAttributes, count, data, searchInput, refetch}: ListWrapperProps) => {
+const TypeListScroller = ({fetchMore, retrieveAttributes, count, data, refetch}: ListWrapperProps) => {
 
     const {
         hasMore,
@@ -33,7 +32,7 @@ const TypeListScroller = ({fetchMore, retrieveAttributes, count, data, searchInp
                             isLoading={loading}
                             onBottomHit={loadMore}
                             loadOnMount={false}>
-            <TypeListHandler refresh={refetch} searchInput={searchInput} refresher={refresher} data={income} />
+            <TypeListHandler refresh={refetch} refresher={refresher} data={income} />
         </ListInfiniteScroll>
     );
 

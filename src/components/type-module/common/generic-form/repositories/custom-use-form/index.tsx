@@ -7,7 +7,7 @@ interface BaseModel {
     id?: string;
 }
 
-const customUseForm = <V extends BaseModel>({schema}: { schema: Yup.AnyObjectSchema | Lazy<any, any> }) => {
+const CustomUseForm = <V extends BaseModel>({schema}: { schema: Yup.AnyObjectSchema | Lazy<any, any> }) => {
 
     const form = useForm({
         resolver: yupResolver(schema)
@@ -24,4 +24,4 @@ const customUseForm = <V extends BaseModel>({schema}: { schema: Yup.AnyObjectSch
 
 }
 
-export default customUseForm;
+export default CustomUseForm;

@@ -53,7 +53,7 @@ export class DefaultStore<V extends Basic> {
         this.list = list;
     }
 
-    public get values () {
+    public get values () : any {
         return this.list.values();
     }
 

@@ -12,7 +12,7 @@ import {BaseProps} from "../../model/BaseProps";
 import ModalActionsUI from "../../../modal-actions";
 import * as Yup from "yup";
 import Lazy from "yup/lib/Lazy";
-import customUseForm from "../../repositories/custom-use-form";
+import CustomUseForm from "../../repositories/custom-use-form";
 import RequestAlert from "../../../request-alert";
 import {ISuccess} from "../../../../models/ISuccess";
 import DialogStore from "../../../../stores/DialogStore";
@@ -48,7 +48,7 @@ const AttachFormGenerator = <V extends BaseProps>({
     const [succeed, setSucceed] = React.useState<ISuccess>({message: "operation-succeed"});
     const [action, {loading, error}] = useMutation(node, variables);
     const ctrl = new AttachFormGeneratorController<V>();
-    const form = customUseForm<V>({schema: schema});
+    const form = CustomUseForm<V>({schema: schema});
 
     useEffect(() => {
         return function cleanup() {

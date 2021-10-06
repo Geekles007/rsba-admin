@@ -6,6 +6,9 @@ import {ApolloProvider} from "@apollo/client";
 import ClientBuilder from "./services/client";
 import {USAGE} from "./models/Environment";
 import "./../../config";
+import ModalUI from "./common/modal-module";
+import HeadTitle from "./common/HeadTitle";
+import HeaderPanel from "./common/header-panel";
 
 interface ParentArticleListProps {
     token: string;
@@ -18,7 +21,10 @@ const TypeModule = ({token}: ParentArticleListProps) => {
         <>
             <ApolloProvider client={Client.getClient}>
                 <Provider DialogStore={DialogStore}>
-                    <TypeManagerModule token={token} />
+                    <HeaderPanel content={<HeadTitle title={"Типы заказов"} />}>
+                        <TypeManagerModule token={token} />
+                    </HeaderPanel>
+                    <ModalUI />
                 </Provider>
             </ApolloProvider>
         </>
