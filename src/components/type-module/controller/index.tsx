@@ -124,7 +124,6 @@ class TypeModuleController {
             func: (row: any) => {
                 // @ts-ignore
                 const data: any = TypeStore.list.get(row?.id);
-                console.log(data);
                 DialogStore.openFromOutside({
                     title: 'fill-and-save',
                     content: <GenericFormUI {...this.getOptions(data)} />,

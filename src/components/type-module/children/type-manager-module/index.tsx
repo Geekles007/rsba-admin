@@ -53,7 +53,6 @@ const TypeManagerModule = ({token}: TypeManagerModuleProps) => {
 
     const onChangeHandler = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
         const value = event?.target?.value;
-        console.log(value);
         setInput(value);
         handleFilter(value);
     }, [input])

@@ -44,9 +44,6 @@ const FormGenerator = <V extends BaseProps>({
     const {t} = useTranslation('translation', {useSuspense: false});
     const [succeed, setSucceed] = React.useState<ISuccess>({message: "operation-succeed"});
     const [action, {loading, error}] = useMutation(node, {
-        update: (cache, mutationResult) => {
-            console.log(mutationResult)
-        },
         ...variables
     });
     const ctrl = new GenericFormController<V>();

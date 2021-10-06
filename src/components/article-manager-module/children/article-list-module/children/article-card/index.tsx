@@ -18,7 +18,6 @@ const ArticleCard = ({article}: ArticleCardProps) => {
         ArticleStore.setSelected(article?.id ?? "");
         ArticleStore.setArticle(article);
         if(firstTab) {
-            console.log(firstTab);
             firstTab.click()
         }
     }, [])

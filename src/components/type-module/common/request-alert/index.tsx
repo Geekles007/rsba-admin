@@ -24,7 +24,6 @@ const RequestAlert: React.FC<{
     const [errors, setErrors] = useState<ApolloErrorInterceptor>();
 
     useEffect(() => {
-        console.log(error);
         if(error) {
             setErrors(new ApolloErrorInterceptor(error.graphQLErrors));
         }
