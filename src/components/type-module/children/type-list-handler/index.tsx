@@ -1,4 +1,4 @@
-import React, {memo} from "react";
+import React, {memo, useEffect} from "react";
 import {IType} from "../../models/IType";
 import DatatableUI, {DatatableProps} from "../../common/datatable";
 import * as _ from "lodash";
@@ -13,7 +13,9 @@ interface TypeListHandlerProps {
 
 const TypeListHandler = ({refresher, data, refresh}: TypeListHandlerProps) => {
 
-    TypeStore.setListFromArray(data);
+    useEffect(() => {
+        TypeStore.setListFromArray(data);
+    }, [])
 
     const tableOptions: DatatableProps<any> = {
 

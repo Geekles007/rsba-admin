@@ -138,7 +138,7 @@ class TypeModuleController {
             title: "delete-action",
             func: (selectedItems: readonly DenormalizedRow[]) => {
                 const options: GenericDeleteProps<DenormalizedRow> = {
-                    text: "delete-item-text",
+                    text: "delete-entity-text",
                     list: selectedItems.filter((item: DenormalizedRow) => ({id: item.id})),
                     operation: {
                         node: DELETE_TYPE_OF_ORDER,

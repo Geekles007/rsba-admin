@@ -7,6 +7,7 @@ import {IType} from "../../models/IType";
 import {RETRIEVES_COUNT} from "../../constants";
 import {IConnection} from "../../models/IConnection";
 import {ioClient} from "../../services/client";
+import TypeStore from "../../stores/TypeStore";
 
 interface TypeModuleProps {
     token: string;
